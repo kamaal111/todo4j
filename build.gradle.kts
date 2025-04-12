@@ -26,6 +26,7 @@ repositories {
 extra["springModulithVersion"] = "1.3.4"
 
 dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.modulith:spring-modulith-starter-core")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
