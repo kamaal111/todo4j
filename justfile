@@ -26,3 +26,9 @@ test:
 [group("hello")]
 hello-request:
     hurl requests/hello/get.hurl
+
+# Greeting request
+[group("requests")]
+[group("greeting")]
+greeting-request:
+    hurl requests/greeting/get.hurl
