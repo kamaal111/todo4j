@@ -16,6 +16,11 @@ build:
 run:
     {{ gradlew }} bootRun
 
+# Test project
+[group("app")]
+test:
+    {{ gradlew }} test
+
 # Hello request
 [group("requests")]
 [group("hello")]
