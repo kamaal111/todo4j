@@ -23,22 +23,15 @@ repositories {
 	mavenCentral()
 }
 
-extra["springModulithVersion"] = "1.3.4"
+extra["hibernateVersion"] = "6.6.13.Final"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.modulith:spring-modulith-starter-core")
+	implementation("org.hibernate.orm:hibernate-core:${property("hibernateVersion")}")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.modulith:spring-modulith-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-dependencyManagement {
-	imports {
-		mavenBom("org.springframework.modulith:spring-modulith-bom:${property("springModulithVersion")}")
-	}
 }
 
 tasks.withType<Test> {
