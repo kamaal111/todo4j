@@ -26,12 +26,15 @@ repositories {
 extra["hibernateVersion"] = "6.6.13.Final"
 extra["modulithVersion"] = "1.3.4"
 extra["securityVersion"] = "6.4.4"
+extra["aspectJVersion"] = "1.9.24"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.hibernate.orm:hibernate-core:${property("hibernateVersion")}")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.security:spring-security-crypto:${property("securityVersion")}")
+	implementation("org.aspectj:aspectjrt:${property("aspectJVersion")}")
+	implementation("org.springframework.boot:spring-boot-starter-aop")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("org.postgresql:postgresql")
 	annotationProcessor("org.projectlombok:lombok")
