@@ -4,6 +4,8 @@ import io.kamaal.todo4j.user.exception.UserBadPayloadException;
 import io.kamaal.todo4j.user.exception.UserNotFoundExceptionException;
 import io.kamaal.todo4j.user.model.User;
 import io.kamaal.todo4j.user.repository.UserRepository;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,13 +18,11 @@ public class UserService {
         this.repo = repo;
     }
 
-    public User create(String username, String password) throws UserBadPayloadException {
-        User user;
-        try {
-            user = new User(username, password);
-        } catch (NullPointerException e) {
-            throw new UserBadPayloadException();
-        }
+    public User create(
+            @NonNull @NotNull(message = "Username cannot be null") String username,
+            @NonNull @NotNull(message = "Password cannot be null") String password
+    ) {
+        var user = new User(username, password);
 
         return repo.save(user);
     }

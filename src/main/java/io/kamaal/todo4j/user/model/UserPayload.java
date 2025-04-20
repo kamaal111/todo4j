@@ -1,3 +1,5 @@
 package io.kamaal.todo4j.user.model;
 
-public record UserPayload(String username, String password) {  }
+import java.util.Optional;
+
+public record UserPayload(Optional<String> username, Optional<String> password) {  }

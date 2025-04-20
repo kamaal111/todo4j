@@ -1,5 +1,6 @@
 package io.kamaal.todo4j.user.controller;
 
+import io.kamaal.todo4j.user.exception.UserBadPayloadException;
 import io.kamaal.todo4j.user.model.UserPayload;
 import io.kamaal.todo4j.user.model.UserResponse;
 import io.kamaal.todo4j.user.service.UserService;
@@ -17,8 +18,10 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus( HttpStatus.CREATED )
-    public UserResponse create(@RequestBody UserPayload payload) {
-        var user = service.create(payload.username(), payload.password());
+    public UserResponse create(@RequestBody UserPayload payload) throws UserBadPayloadException {
+        var username = payload.username().orElseThrow(UserBadPayloadException::new);
+        var password = payload.password().orElseThrow(UserBadPayloadException::new);
+        var user = service.create(username, password);
 
         return UserResponse.fromUser(user);
     }
