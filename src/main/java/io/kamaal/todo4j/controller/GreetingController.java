@@ -1,5 +1,7 @@
-package io.kamaal.todo4j;
+package io.kamaal.todo4j.controller;
 
+import io.kamaal.todo4j.model.Greeting;
+import io.kamaal.todo4j.service.GreetingService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

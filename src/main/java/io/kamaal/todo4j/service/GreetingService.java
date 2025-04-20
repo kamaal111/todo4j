@@ -1,4 +1,4 @@
-package io.kamaal.todo4j;
+package io.kamaal.todo4j.service;
 
 import org.springframework.stereotype.Service;
 

@@ -21,11 +21,21 @@ run:
 test:
     {{ gradlew }} test
 
-# Hello request
+# Run services
+[group("services")]
+run-services:
+    docker compose up -d
+
+# Tear down services
+[group("services")]
+tear-services:
+    docker compose down
+
+# Create user
 [group("requests")]
-[group("hello")]
-hello-request:
-    hurl requests/hello/get.hurl
+[group("users")]
+create-user-request username password:
+    hurl --variable username={{ username }} --variable password={{ password }} requests/user/create.hurl
 
 # Greeting request
 [group("requests")]

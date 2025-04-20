@@ -1,4 +1,4 @@
-package io.kamaal.todo4j;
+package io.kamaal.todo4j.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

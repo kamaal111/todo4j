@@ -1,5 +1,7 @@
 package io.kamaal.todo4j;
 
+import io.kamaal.todo4j.controller.GreetingController;
+import io.kamaal.todo4j.service.GreetingService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
