@@ -35,9 +35,7 @@ dependencies {
 	implementation("org.springframework.security:spring-security-crypto:${property("securityVersion")}")
 	implementation("org.aspectj:aspectjrt:${property("aspectJVersion")}")
 	implementation("org.springframework.boot:spring-boot-starter-aop")
-	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("org.postgresql:postgresql")
-	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

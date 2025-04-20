@@ -3,15 +3,17 @@ package io.kamaal.todo4j.user.controller;
 import io.kamaal.todo4j.user.model.UserPayload;
 import io.kamaal.todo4j.user.model.UserResponse;
 import io.kamaal.todo4j.user.service.UserService;
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("/api/users")
 public class UserController {
     private final UserService service;
+
+    public UserController(UserService service) {
+        this.service = service;
+    }
 
     @PostMapping
     @ResponseStatus( HttpStatus.CREATED )
