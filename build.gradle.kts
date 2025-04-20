@@ -25,11 +25,13 @@ repositories {
 
 extra["hibernateVersion"] = "6.6.13.Final"
 extra["modulithVersion"] = "1.3.4"
+extra["securityVersion"] = "6.4.4"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.hibernate.orm:hibernate-core:${property("hibernateVersion")}")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.security:spring-security-crypto:${property("securityVersion")}")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("org.postgresql:postgresql")
 	annotationProcessor("org.projectlombok:lombok")
