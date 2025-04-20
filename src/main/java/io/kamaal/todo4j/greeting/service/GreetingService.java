@@ -1,4 +1,4 @@
-package io.kamaal.todo4j.service;
+package io.kamaal.todo4j.greeting.service;
 
 import org.springframework.stereotype.Service;
 

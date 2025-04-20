@@ -35,10 +35,16 @@ tear-services:
 [group("requests")]
 [group("users")]
 create-user-request username password:
-    hurl --variable username={{ username }} --variable password={{ password }} requests/user/create.hurl
+    hurl --variable username={{ username }} --variable password={{ password }} requests/user/create.hurl | jq .
+
+# Get user
+[group("requests")]
+[group("users")]
+get-user-request username:
+    hurl --variable username={{ username }} requests/user/get.hurl | jq .
 
 # Greeting request
 [group("requests")]
 [group("greeting")]
 greeting-request:
-    hurl requests/greeting/get.hurl
+    hurl requests/greeting/get.hurl | jq .

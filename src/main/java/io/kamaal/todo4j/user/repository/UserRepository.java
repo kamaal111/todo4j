@@ -1,6 +1,6 @@
-package io.kamaal.todo4j.repository;
+package io.kamaal.todo4j.user.repository;
 
-import io.kamaal.todo4j.model.User;
+import io.kamaal.todo4j.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

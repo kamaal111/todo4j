@@ -1,5 +1,6 @@
-package io.kamaal.todo4j.controller;
+package io.kamaal.todo4j.greeting.controller;
 
+import io.kamaal.todo4j.greeting.controller.GreetingController;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;

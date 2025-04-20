@@ -1,7 +1,8 @@
-package io.kamaal.todo4j.service;
+package io.kamaal.todo4j.user.service;
 
-import io.kamaal.todo4j.model.User;
-import io.kamaal.todo4j.repository.UserRepository;
+import io.kamaal.todo4j.user.exception.UserNotFoundException;
+import io.kamaal.todo4j.user.model.User;
+import io.kamaal.todo4j.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,9 +19,9 @@ public class UserService {
         return repo.save(user);
     }
 
-    public User findByUsername(String username) throws RuntimeException {
+    public User findByUsername(String username) throws UserNotFoundException {
         return repo
                 .findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(UserNotFoundException::new);
     }
 }

@@ -1,4 +1,4 @@
-package io.kamaal.todo4j.model;
+package io.kamaal.todo4j.user.model;
 
 import jakarta.persistence.*;
 import lombok.*;

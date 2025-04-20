@@ -1,4 +1,4 @@
-package io.kamaal.todo4j;
+package io.kamaal.todo4j.greeting;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

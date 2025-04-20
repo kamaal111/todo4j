@@ -1,3 +1,3 @@
-package io.kamaal.todo4j.model;
+package io.kamaal.todo4j.greeting.model;
 
 public record Greeting(long id, String content) { }
