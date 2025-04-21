@@ -1,4 +1,4 @@
-package io.kamaal.todo4j.aspects;
+package io.kamaal.todo4j.shared.aspects;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

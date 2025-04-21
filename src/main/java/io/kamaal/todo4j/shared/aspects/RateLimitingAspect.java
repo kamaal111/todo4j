@@ -1,4 +1,4 @@
-package io.kamaal.todo4j.aspects;
+package io.kamaal.todo4j.shared.aspects;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.kamaal.todo4j.shared.model.ErrorResponse;
@@ -68,11 +68,7 @@ public class RateLimitingAspect {
                 
                 var response = attributes.getResponse();
                 if (response != null) {
-                    var errorResponse = new ErrorResponse(
-                        (long) HttpStatus.TOO_MANY_REQUESTS.value(),
-                        HttpStatus.TOO_MANY_REQUESTS.getReasonPhrase(),
-                "Rate limit exceeded. Try again in a minute."
-                    );
+                    var errorResponse = ErrorResponse.fromHTTPStatus(HttpStatus.TOO_MANY_REQUESTS, "Rate limit exceeded. Try again in a minute.");
                     var errorResponseBytes = objectMapper.writeValueAsBytes(errorResponse);
                     response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
                     response.setContentType(MediaType.APPLICATION_JSON_VALUE);

@@ -1,4 +1,4 @@
-package io.kamaal.todo4j.aspects;
+package io.kamaal.todo4j.shared.aspects;
 
 import io.kamaal.todo4j.shared.exception.BadRequestException;
 import io.kamaal.todo4j.shared.exception.NotFoundException;
@@ -51,35 +51,19 @@ public class ExceptionHandlingAspect {
         ErrorResponse errorResponse;
         if (exception instanceof NotFoundException) {
             response.setStatus(HttpStatus.NOT_FOUND.value());
-            errorResponse = createErrorResponse(
-                    HttpStatus.NOT_FOUND.value(),
-                    HttpStatus.NOT_FOUND.getReasonPhrase(),
-                    exception.getMessage()
-            );
+            errorResponse = ErrorResponse.fromHTTPStatus(HttpStatus.NOT_FOUND, exception.getMessage());
         } else if (exception instanceof BadRequestException) {
             response.setStatus(HttpStatus.BAD_REQUEST.value());
-            errorResponse = createErrorResponse(
-                    HttpStatus.BAD_REQUEST.value(),
-                    HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                    exception.getMessage()
-            );
+            errorResponse = ErrorResponse.fromHTTPStatus(HttpStatus.BAD_REQUEST, exception.getMessage());
         } else {
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            errorResponse = createErrorResponse(
-                    HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
-                    exception.getMessage()
-            );
+            errorResponse = ErrorResponse.fromHTTPStatus(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
         }
 
         writeErrorResponse(response, errorResponse);
         logger.debug("Handled exception with response status: {} and body: {}", response.getStatus(), errorResponse);
 
         return null;
-    }
-    
-    private ErrorResponse createErrorResponse(int status, String message, String error) {
-        return new ErrorResponse((long) status, message, error);
     }
     
     private void writeErrorResponse(HttpServletResponse response, ErrorResponse errorResponse) throws IOException {

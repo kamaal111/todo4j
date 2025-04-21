@@ -1,3 +1,9 @@
 package io.kamaal.todo4j.shared.model;
 
-public record ErrorResponse(Long status, String message, String details) { }
+import org.springframework.http.HttpStatus;
+
+public record ErrorResponse(Long status, String message, String details) {
+    public static ErrorResponse fromHTTPStatus(HttpStatus status, String details) {
+        return new ErrorResponse((long) status.value(), status.getReasonPhrase(), details);
+    }
+}
