@@ -1,7 +1,6 @@
 package io.kamaal.todo4j.shared.aspects;
 
-import io.kamaal.todo4j.shared.exception.BadRequestException;
-import io.kamaal.todo4j.shared.exception.NotFoundException;
+import io.kamaal.todo4j.shared.exception.BaseHTTPException;
 import io.kamaal.todo4j.shared.model.ErrorResponse;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -49,12 +48,9 @@ public class ExceptionHandlingAspect {
         if (response.isCommitted()) return null;
 
         ErrorResponse errorResponse;
-        if (exception instanceof NotFoundException) {
-            response.setStatus(HttpStatus.NOT_FOUND.value());
-            errorResponse = ErrorResponse.fromHTTPStatus(HttpStatus.NOT_FOUND, exception.getMessage());
-        } else if (exception instanceof BadRequestException) {
-            response.setStatus(HttpStatus.BAD_REQUEST.value());
-            errorResponse = ErrorResponse.fromHTTPStatus(HttpStatus.BAD_REQUEST, exception.getMessage());
+        if (exception instanceof BaseHTTPException baseHTTPException) {
+            response.setStatus(baseHTTPException.getStatus().value());
+            errorResponse = ErrorResponse.fromHTTPStatus(baseHTTPException.getStatus(), baseHTTPException.getMessage());
         } else {
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             errorResponse = ErrorResponse.fromHTTPStatus(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());

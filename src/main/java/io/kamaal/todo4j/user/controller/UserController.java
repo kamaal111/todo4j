@@ -18,7 +18,7 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus( HttpStatus.CREATED )
-    public UserResponse create(@RequestBody UserPayload payload) throws UserBadPayloadException {
+    public UserResponse create(@RequestBody UserPayload payload) {
         var username = payload.username().orElseThrow(UserBadPayloadException::new);
         var password = payload.password().orElseThrow(UserBadPayloadException::new);
         var user = service.create(username, password);
